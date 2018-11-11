@@ -35,7 +35,7 @@ export default class Word extends React.Component<{}, {word: string, timing: num
   constructor(props) {
     super(props);
     this.state = {
-      word: "Hello",
+      word: "Bienvenue",
       timing: 4,
     };
     this.handleTiming = this.handleTiming.bind(this);
@@ -45,7 +45,7 @@ export default class Word extends React.Component<{}, {word: string, timing: num
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log(this.state.timing);
-        fetch("http://localhost:5001/api/v1/random-word")
+        fetch("https://murmure-asmr-api.herokuapp.com/api/v1/random-word")
         .then(res => res.json())
         .then(res => {
           this.setState({word: res.word});
