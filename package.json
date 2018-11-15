@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node server.js",
-    "heroku-prebuild": "webpack -p"
+    "heroku-prebuild": "npm install && webpack -p"
   },
   "author": "",
   "license": "ISC",
