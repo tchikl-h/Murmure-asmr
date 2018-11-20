@@ -5,36 +5,21 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import TextField from '@material-ui/core/TextField';
 import blue from '@material-ui/core/colors/blue';
 
-// const styles = theme => ({
-//   container: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//   },
-//   textField: {
-//     marginLeft: theme.spacing.unit,
-//     marginRight: theme.spacing.unit,
-//   },
-//   dense: {
-//     marginTop: 16,
-//   },
-//   menu: {
-//     width: 200,
-//   },
-// });
-
 class FilledTextFields extends React.Component<any> {
   state = {
     name: '',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
   };
 
   handleChange = name => event => {
-    this.props.onDataFetched(event.target.value)
     this.setState({
       [name]: event.target.value,
     });
+    if (event.target.value.match(/\D/g) === null &&
+        parseInt(event.target.value) > 0 &&
+        parseInt(event.target.value) <= 1000 &&
+        event.target.value !== "") {
+          this.props.onDataFetched(event.target.value)
+        }
   };
 
   render() {
@@ -60,6 +45,13 @@ class FilledTextFields extends React.Component<any> {
             onChange={this.handleChange('name')}
             margin="normal"
             variant="filled"
+            onKeyPress={(ev) => {
+              if (ev.key === 'Enter') {
+                ev.preventDefault();
+              }
+            }}
+            error={this.state.name.match(/\D/g) !== null || parseInt(this.state.name) > 1000}
+            autoComplete='off'
           />
         </MuiThemeProvider>
       </form>
