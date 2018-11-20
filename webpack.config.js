@@ -6,7 +6,7 @@ var config = {
     filename: "bundle.js"
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".css"]
+    extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
   },
 
   module: {
@@ -17,12 +17,23 @@ var config = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        loader: 'style-loader'
+        test: /\.scss$/,
+          use: [{
+            loader: "style-loader"
+          }, {
+            loader: "css-loader" 
+          }, {
+            loader: "sass-loader"
+          }]
       },
       {
-        test: /\.css$/,
-        loader: 'css-loader'
+        test: /\.woff$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 50000,
+          },
+        },
       }
     ]
   }

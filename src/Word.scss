@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "CaviarDreams";
+  src:url("../fonts/caviardreams.woff");
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.wordStyle {
+  font-family: "CaviarDreams";
+  animation-name: fadeInOut;
+  animation-duration: 4s;
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
