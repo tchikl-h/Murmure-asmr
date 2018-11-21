@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import FilledTextFields from './TextField';
-import PaypalExpressBtn from 'react-paypal-express-checkout';
 import "./Word.scss";
 import "./Logo.scss";
+import "./Button.scss";
 
 export default class Word extends React.Component<{}, {word: string, timing: number}> {
 
@@ -72,14 +72,9 @@ export default class Word extends React.Component<{}, {word: string, timing: num
 
   render() {
       const style = {
-        height: "400px",/*Only for the demo.*/
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-end",
-      }
-      const client = {
-        sandbox:    'APP-80W284485P519543T',
-        production: 'APP-80W284485P519543T',
+        position: 'absolute',
+        top: "80%",
+        left: "50%",
       }
       return (
         <div>
@@ -90,10 +85,9 @@ export default class Word extends React.Component<{}, {word: string, timing: num
             Murmure ASMR
           </h1>
           <div className="wordStyle" id="word">{this.state.word}</div>
-          <div style={style}>
+          <div className="buttonStyle">
             <FilledTextFields title="Intervalle (en seconde)" onDataFetched={this.handleTiming}/>
           </div>
-          {/* <PaypalExpressBtn client={client} currency={'USD'} total={1.00} /> */}
         </div>);
   }
 }
